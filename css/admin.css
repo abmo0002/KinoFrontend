@@ -1,0 +1,81 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*  height: 100vh; Sørger for, at siden fylder hele vinduet */
+    background-color: #1a1a1a;
+    color: white;
+}
+
+
+.header-container {
+    display: flex;
+    align-items: center;
+    color: white;
+
+
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column; /* Læg knap-grupperne vertikalt */
+    align-items: center; /* Center knap-grupperne */
+    background-color: #383838; /* Lys baggrundsfarve for knap-containeren */
+    padding: 20px; /* Indvendig padding */
+    border-radius: 40px; /* Runde hjørner for containeren */
+    width: 600px;
+
+}
+
+/* Styling for knap-grupper */
+.button-group {
+    display: flex;
+    justify-content: center; /* Center knapperne inden for gruppen */
+    gap: 20px; /* Mellemrum mellem knapperne */
+    margin-bottom: 15px; /* Mellemrum mellem knap-grupperne */
+    border-radius: 40px;
+}
+
+/* Knap styling */
+button {
+    background-color: black; /* Sort baggrund */
+    color: white; /* Hvid tekst */
+    border: none; /* Ingen kant */
+    border-radius: 50px; /* Runde hjørner */
+    padding: 10px 20px; /* Polstring */
+    cursor: pointer; /* Pointer ved hover */
+    transition: background-color 0.3s; /* Glidende overgang for hover-effekt */
+    /*border-radius: 50px; */
+}
+
+button:hover {
+    background-color: #444; /* Mørkere sort ved hover */
+}
+
+/* Modal styling */
+.modal-header {
+    background-color: #343a40;
+    color: white;
+}
+
+.modal-body {
+    padding: 20px;
+}
+.button.modal-button {
+    background-color: white;
+    color: black;
+}
+.btn-primary {
+    background-color: #ffcc00;
+    color: black;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.form-label {
+    color: black;
+}
+

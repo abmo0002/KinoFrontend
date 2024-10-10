@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filminformation</title>
+    <link rel="stylesheet" href="../css/header.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/movie.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
+</head>
+<body>
+<div class="header">
+    <a href="landingPage.html" class="logo">KinoXP</a>
+</div>
+<div class="container d-flex">
+    <!-- Movie Details Section -->
+    <div id="movieDetails" class="p-3">
+        <h2>Informationer om filmen</h2>
+        <p>Titel: <span id="movieTitle"></span></p>
+        <p>Udgivelses år: <span id="releaseYear"></span></p>
+        <img id="moviePoster" alt="Movie Poster" style="width:200px;"/>
+        <h3>Skuespillere:</h3>
+        <div id="actors"></div>
+        <h3>Instruktører:</h3>
+        <div id="directors"></div>
+        <h3>Genrer:</h3>
+        <div id="genres"></div>
+    </div>
+
+
+    <!-- Showings List Section -->
+    <div class="p-3" style="flex-grow: 1;">
+        <h2>Filmvisninger</h2>
+        <ul id="showingsList">
+            <!-- Dynamically populated showings will appear here -->
+        </ul>
+        <!-- Button to trigger modal -->
+        <button id="addShowingButton" class="btn btn-primary mt-3" style="display: none;">Tilføj ny filmvisning</button>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="showingModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Tilføj ny filmvisning</h2>
+        <form id="addShowingForm">
+            <label for="theatreId">Sal:</label>
+            <select name="theatreId" id="theatreId"></select>
+
+            <label for="adminId">Film operatør:</label>
+            <select name="adminId" id="adminId"></select>
+
+            <label for="dateTime">Start dato og tid:</label>
+            <input type="datetime-local" id="dateTime" name="dateTime" required>
+
+            <button type="submit" class="btn btn-primary mt-3">Tilføj visning</button>
+        </form>
+        <div id="responseMessage"></div>
+    </div>
+</div>
+<div class="footer">
+    <div class="footer-content">
+        <div class="footer-left"> <p>Telefonnummer: +45 1234 5678</p>
+            <p>Hjemmeside: <a href="https://www.kinoxp.dk">www.kinoxp.dk</a></p>
+        </div>
+        <div class="footer-right">   <p>Adresse: KinoXP, Gade 123, 1000 København</p>
+            <p>Email: <a href="mailto:kontakt@kinoxp.dk">kontakt@kinoxp.dk</a></p>
+            <p><a href="login.html" class="admin-login-link">Log ind som admin</a></p>
+        </div></div>
+</div>
+<script src="../js/movie.js" type="module"></script>
+</body>
+</html>

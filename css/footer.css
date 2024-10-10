@@ -1,0 +1,50 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1; /* Fylder den resterende plads mellem header og footer */
+}
+
+.footer {
+    background-color: #1a1a1a;
+    padding: 20px;
+    width: 100%;
+    color: #ffcc00;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-left,
+.footer-right {
+    flex: 1;
+    padding: 10px;
+}
+
+.footer-left p,
+.footer-right p {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+.footer-content a {
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+.footer-content a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}

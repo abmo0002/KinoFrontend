@@ -1,0 +1,33 @@
+.header {
+    background-color: #1a1a1a;
+    width: 100%;
+    padding: 30px 30px;
+    position: sticky; /* Gør headeren fastlåst øverst, når du scroller */
+    top: 0; /* Sørger for, at headeren er placeret øverst på siden */
+    z-index: 1000;
+
+}
+
+.header a {
+    color: #ffcc00;
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 40px;
+    margin-top: 200px;
+}
+
+.header a.logo {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 60px;
+    margin-top: 20px;
+}
+
+.header a:hover {
+    background-color: #000000;
+    color: #ffcc00;
+}

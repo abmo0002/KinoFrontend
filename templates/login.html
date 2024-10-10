@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/header.css">
+</head>
+<body>
+<div class="header">
+    <a href="landingPage.html" class="logo">KinoXP</a>
+</div>
+<div class="container">
+    <h2>Admin login</h2>
+    <form id="login-form">
+        <label for="brugernavn">Brugernavn:</label>
+        <input type="text" id="brugernavn" placeholder="Indtast brugernavn" required>
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Indtast password" required>
+        <button type="submit">Login</button>
+        <div class="error" id="error-message">Forkert brugernavn eller passsword :(</div>
+    </form>
+</div>
+<script src="../js/login.js" type="module"></script>
+</body>
+</html>

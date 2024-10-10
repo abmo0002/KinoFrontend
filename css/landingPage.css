@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    width: 90%;
+    margin: 20px auto;
+}
+h1 {
+    text-align: center;
+    color: #ffcc00; /* Gylden farve som biograf stemning */
+}
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 film pr. række */
+    gap: 20px; /* Afstand mellem filmene */
+    margin-top: 20px;
+}
+.movie-item {
+    text-align: center;
+}
+.poster img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.poster img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.5);
+}
+
+.title {
+    margin-top: 10px;
+    font-size: 1.1em;
+    color: #ffcc00;
+}
+
+.modal-body {
+    color: black;
+}
+
+.modal-header {
+    color: black;
+}

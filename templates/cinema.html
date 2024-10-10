@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kino Seat Selection</title>
+    <link rel="stylesheet" href="../css/cinema.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/header.css">
+</head>
+<body>
+<div class="header">
+    <a href="landingPage.html" class="logo">Kino</a>
+</div>
+<!-- Skærm sektion -->
+<div class="screen"> Movie Screen</div>
+
+<!-- Container til dynamisk oprettede sæder -->
+<div class="container" id="seatContainer"></div>
+
+<!-- Email-indtastning og booking-knap -->
+<div class="form-container">
+    <input type="email" id="email" placeholder="Write Your E-mail" required>
+    <button id="save_booking_btn">Save Reservation</button>
+</div>
+
+<!-- Sæde status forklaring (Legend) -->
+<div class="legend">
+    <div class="legend-item">
+        <span class="seat available"></span> Empty Seat
+    </div>
+    <div class="legend-item">
+        <span class="seat occupied"></span> Occupied Seat
+    </div>
+    <div class="legend-item">
+        <span class="seat selected"></span> Your Seats
+    </div>
+</div>
+
+<div class="footer">
+    <div class="footer-content">
+        <div class="footer-left"> <p>Phone number: +45 1234 5678</p>
+            <p>Website: <a href="https://www.kinoxp.dk">www.kinoxp.dk</a></p>
+        </div>
+        <div class="footer-right">   <p>Address: KinoXP, Street 123, 1000 Copenhagen</p>
+            <p>Email: <a href="mailto:kontakt@kinoxp.dk">kontakt@kinoxp.dk</a></p>
+            <p><a href="login.html" class="admin-login-link">Log ind As admin</a></p>
+        </div></div>
+</div>
+
+<!-- JavaScript fil til sædehåndtering -->
+<script src="../js/cinema.js"></script>
+</body>
+</html>

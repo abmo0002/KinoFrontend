@@ -1,0 +1,75 @@
+/* Basic styling for the body */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Style for the header */
+.header {
+    width: 100%;
+    background-color: #333;
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header a.logo {
+    font-size: 2em;
+    font-weight: bold;
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+.header a.logo:hover {
+    color: #fff;
+}
+
+/* Styling the main content */
+h1 {
+    font-size: 3em;
+    color: #ffcc00;
+    margin: 20px 0;
+}
+
+p {
+    font-size: 1.5em;
+    color: #b3b3b3;
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+/* Specific styling for reserved seat display */
+#reserved-seats {
+    font-weight: bold;
+    color: #ffcc00;
+}
+
+/* Error message styling */
+body p.error-message {
+    font-size: 2em;
+    color: red;
+    text-align: center;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+    }
+
+    p {
+        font-size: 1.2em;
+    }
+
+    .header a.logo {
+        font-size: 1.8em;
+    }
+}
