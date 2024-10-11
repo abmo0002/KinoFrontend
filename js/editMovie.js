@@ -1,11 +1,10 @@
-// Modal elements
+
 const modal = document.getElementById("edit-movie-modal");
 const closeModalButton = document.getElementById("close-modal");
 const cancelButton = document.getElementById("cancel-button");
 const saveButton = document.getElementById("save-button");
 const deleteButton = document.getElementById("delete-movie-btn");
 
-// Input elements
 const searchInput = document.getElementById("searched-movie");
 const searchButton = document.getElementById("search-button");
 const titleInput = document.getElementById("movie-title");
@@ -51,7 +50,7 @@ searchButton.addEventListener("click", function () {
                     movieposterInput.value = movie.poster;
                     movieImdbInput.value = movie.imdbRating;
                     movieRelaseDateInput.value = movie.released;
-                    // Open the modal
+
                     modal.classList.add("modal-open");
                 } else {
                     alert("No movie found");
@@ -77,7 +76,7 @@ saveButton.addEventListener("click", function (e) {
         actors: movieActorsInput.value.split(',').map(name => ({ fullName: name.trim() })).filter(a => a.fullName),
         poster: movieposterInput.value.trim(),
         imdbRating: movieImdbInput.value.trim(),
-        imdbID: movieImdbIDinput.value.trim()
+        imdbID: movieImdbIDInput.value.trim()
     };
 
     if (currentMovieId) {
@@ -100,7 +99,7 @@ saveButton.addEventListener("click", function (e) {
     } else {
         alert("No movie i chosen to be updated");
     }
-    ;
+
 })
 deleteButton.addEventListener("click", function () {
     if (currentMovieId) {

@@ -1,4 +1,4 @@
-const showingId = getQueryParam('id'); // Get the movie ID from the URL
+const showingId = getQueryParam('id');
 
 if (showingId) {
     loadSeatsForShowing(showingId);
@@ -13,61 +13,61 @@ function getQueryParam(param) {
 
 let selectedSeatIds = [];
 
-// Function to load all seats for a specific showing
+
 function loadSeatsForShowing(showingId) {
-    // Fetch the seats data, including seatRows and seatsPerRow
+
     fetch(`http://localhost:8080/showing/${showingId}/seats`)
         .then(response => response.json())
         .then(data => {
             console.log('Data recieved from server:', data)
-            const { bookedSeats, allSeats, seatRows, seatsPerRow } = data;  // Destructure the data
-            renderSeats(allSeats, bookedSeats, seatRows, seatsPerRow);      // Pass seatRows and seatsPerRow to the render function
+            const { bookedSeats, allSeats, seatRows, seatsPerRow } = data;
+            renderSeats(allSeats, bookedSeats, seatRows, seatsPerRow);
         })
         .catch(error => {
             console.error("Error fetching seats: ", error);
         });
 }
 
-// Function to check if a seat is booked
+
 function isSeatBooked(seat, bookedSeats) {
     return bookedSeats.some(bookedSeat => bookedSeat.seatId === seat.seatId);
 }
 
-// Function to render all seats based on theater layout and mark occupied ones
+
 function renderSeats(allSeats, bookedSeats, seatRows, seatsPerRow) {
     const container = document.querySelector('.container');
     container.innerHTML = '';
 
-    // Loop over all rows and seats per row
+
     for (let rowIndex = 1; rowIndex <= seatRows; rowIndex++) {
         const rowElement = document.createElement('div');
-        rowElement.classList.add('row');  // Create a new row for each rowIndex
+        rowElement.classList.add('row');
 
         for (let seatIndex = 1; seatIndex <= seatsPerRow; seatIndex++) {
             const seat = allSeats.find(seat => seat.rowNumber === rowIndex && seat.seatNumber === seatIndex);
 
             const seatElement = document.createElement('div');
-            seatElement.classList.add('seat');  // Set default seat class
+            seatElement.classList.add('seat');
             seatElement.dataset.seatId = seat.seatId;
 
-            // Set the text to display row and seat number
+
             seatElement.innerText = `${seat.rowNumber}-${seat.seatNumber}`;
 
-            // Check if the seat is in the bookedSeats list
+
             if (isSeatBooked(seat, bookedSeats)) {
-                seatElement.classList.add('occupied');  // Mark it as occupied
-                seatElement.style.pointerEvents = 'none';  // Make it unclickable
+                seatElement.classList.add('occupied');
+                seatElement.style.pointerEvents = 'none';
             } else {
-                seatElement.classList.add('available');  // Mark as available (clickable)
-                seatElement.addEventListener('click', () => selectSeat(seat.seatId)); // Add click event for available seats
+                seatElement.classList.add('available');
+                seatElement.addEventListener('click', () => selectSeat(seat.seatId));
             }
 
             rowElement.appendChild(seatElement);
         }
-        container.appendChild(rowElement);  // Append the row to the container after completing all seats in the row
+        container.appendChild(rowElement);
     }
 
-    // Update selected seats visually
+
     selectedSeatIds.forEach(seatId => {
         const selectedSeat = container.querySelector(`[data-seat-id="${seatId}"]`);
         if (selectedSeat) {
@@ -76,26 +76,26 @@ function renderSeats(allSeats, bookedSeats, seatRows, seatsPerRow) {
     });
 }
 
-// Function to handle seat selection
+
 function selectSeat(seatId) {
     const selectedSeat = document.querySelector(`[data-seat-id="${seatId}"]`);
 
-    // Toggle selection
+
     if (selectedSeat.classList.contains('selected')) {
-        selectedSeat.classList.remove('selected');  // Unselect if already selected
-        selectedSeatIds = selectedSeatIds.filter(id => id !== seatId); // Remove from selectedSeatIds
+        selectedSeat.classList.remove('selected');
+        selectedSeatIds = selectedSeatIds.filter(id => id !== seatId);
     } else {
-        selectedSeat.classList.add('selected');  // Mark as selected
-        selectedSeatIds.push(seatId); // Add to selectedSeatIds
+        selectedSeat.classList.add('selected');
+        selectedSeatIds.push(seatId);
     }
 
     console.log('Selected seat IDs: ', selectedSeatIds);
 }
 
-// Add event listener to the save booking button
+
 document.getElementById('save_booking_btn').addEventListener('click', saveBooking);
 
-// Function to handle saving the booking
+
 function saveBooking() {
     const emailInput = document.getElementById('email');
     const email = emailInput.value.trim();
@@ -107,7 +107,7 @@ function saveBooking() {
     createBooking(showingId, email, selectedSeatIds);
 }
 
-// Function to send booking data to the backend
+
 function createBooking(showingId, email, seatIds) {
     if (!Array.isArray(seatIds) || seatIds.length === 0) {
         alert('No seats selected. Please select at least one seat.');
@@ -119,7 +119,7 @@ function createBooking(showingId, email, seatIds) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(seatIds) // Ensure you're sending an array
+        body: JSON.stringify(seatIds)
     })
         .then(response => {
             if (!response.ok) {
@@ -131,8 +131,7 @@ function createBooking(showingId, email, seatIds) {
             alert('Booking is saved!');
             localStorage.setItem('bookingDetails', JSON.stringify(responseData));
             window.location.href= "../html/reservation.html"
-            // Update the UI by calling loadSeatsForShowing
-            //loadSeatsForShowing(showingId); // Refresh the seat display
+
         })
         .catch(error => {
             console.error('Error:', error);

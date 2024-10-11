@@ -93,25 +93,25 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    // Modal handling for "Add New Showing"
+
     const modal = document.getElementById("showingModal");
     const addShowingButton = document.getElementById("addShowingButton");
     const closeModal = document.querySelector(".close");
 
     async function adminLoggedIn() {
         try {
-            const response = await fetch("http://localhost:8080/admin/check-admin-presence", {
+            const response = await fetch("http://localhost:8080/admin/check-employee-session", {
                 method: "GET",
                 credentials: "include"
             });
             return response.ok;
         } catch (error) {
-            console.error("Error checking admin session:", error);
+            console.error("Error checking employee session:", error);
             return false;
         }
     }
 
-// Show the button if the condition is met
+
     adminLoggedIn().then((isLoggedIn) => {
         if (isLoggedIn) {
             addShowingButton.style.display = 'inline-block';
@@ -127,14 +127,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("click", (event) => {
         if (event.target === modal) {
-            modal.style.display = "none"; // Hide the modal when clicking outside
+            modal.style.display = "none";
         }
     });
 
-    // Form submission for adding a new showing
+
     const addShowingForm = document.getElementById("addShowingForm");
     addShowingForm.addEventListener("submit", (event) => {
-        event.preventDefault(); // Prevent the form from submitting normally
+        event.preventDefault();
 
         const showingData = {
             movie: { movieId: movieId },
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         };
 
-        // Send a POST request to the backend to create a new showing
+
         fetch("http://localhost:8080/showing/create", {
             method: "POST",
             headers: {
@@ -155,21 +155,19 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(response => response.json())
             .then(data => {
                 console.log("Showing created:", data);
-                modal.style.display = "none"; // Close the modal
-                fetchShowings(movieId); // Refresh the showings list
+                modal.style.display = "none";
+                fetchShowings(movieId);
             })
             .catch(error => console.error('Error for adding a showing:', error));
     });
 });
 
-// movie_detail.js
 
-// Function to populate theatre dropdown
 function populateTheatreDropdown() {
     const theatreSelect = document.getElementById('theatreId');
 
-    // Fetch the list of theatres from the backend
-    fetch('http://localhost:8080/showing/theatres')
+
+    fetch('http://localhost:8080/showing/cinema-halls')
         .then(response => response.json())
         .then(theatres => {
             theatreSelect.innerHTML = '';
@@ -196,7 +194,7 @@ function populateAdminDropdown() {
     const adminSelect = document.getElementById('adminId');
 
 
-    fetch('http://localhost:8080/showing/admins')
+    fetch('http://localhost:8080/showing/employees')
         .then(response => response.json())
         .then(admins => {
             adminSelect.innerHTML = '';
