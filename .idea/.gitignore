@@ -6,3 +6,7 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+git add path/to/your/js
+git add path/to/your/css
+git add path/to/your/templates
+
