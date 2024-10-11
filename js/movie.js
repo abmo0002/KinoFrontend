@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const movieId = getQueryParam('id'); // Get the movie ID from the URL
+    const movieId = getQueryParam('id');
 
     if (movieId) {
         fetchMovieDetails(movieId);
@@ -8,13 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('movieDetails').innerHTML = '<p>No movie ID specified.</p>';
     }
 
-    // Function to fetch movie details from the backend
+
     function fetchMovieDetails(movieId) {
         fetch(`http://localhost:8080/movie/${movieId}`)
             .then(response => response.json())
             .then(movie => {
                 if (movie) {
-                    // Update the DOM with movie details
+
                     document.getElementById("movieTitle").textContent = movie.title || 'N/A';
                     document.getElementById("releaseYear").textContent = movie.year || 'N/A';
                     document.getElementById("moviePoster").src = movie.poster || 'default_poster.jpg';
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         const directorList = movie.directors.map(director => `<li>${director.fullName}</li>`).join('');
                         document.getElementById("directors").innerHTML = `<ul>${directorList}</ul>`;
                     } else {
-                        document.getElementById("directors").textContent = 'N/A';
+                        document.getElementById("directors").textContent = 'Unknown';
                     }
                     if (movie.genres && Array.isArray(movie.genres)) {
                         const genreNames = movie.genres.map(genre => genre.genreName).join(', ');
@@ -39,21 +39,21 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
 
                 } else {
-                    document.getElementById('movie').innerHTML = '<p>Movie not found.</p>';
+                    document.getElementById('movie').innerHTML = '<p>Movie is not found.</p>';
                 }
 
             })
             .catch(error => {
                 console.error('Error fetching movie details:', error);
-                document.getElementById('movie').innerHTML = '<p>Error fetching movie details.</p>';
+                document.getElementById('movie').innerHTML = '<p>Error fetching details.</p>';
             });
 
 
     }
 
-    // Updated fetchShowings function
+
     function fetchShowings(movieId) {
-        fetch(`http://localhost:8080/showing/showings/${movieId}`) // Adjusted endpoint to match your backend
+        fetch(`http://localhost:8080/showing/showings/${movieId}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -62,20 +62,20 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .then(data => {
                 const showingsList = document.getElementById("showingsList");
-                showingsList.innerHTML = ""; // Clear any previous showings
+                showingsList.innerHTML = "";
 
-                // Loop through the showings and add them to the list
+
                 if (data && data.length > 0) {
                     data.sort((a, b) => new Date(a.dateTime) - new Date(b.dateTime));
                     data.forEach(showing => {
                         const listItem = document.createElement("li");
                         const dateTime = new Date(showing.dateTime);
                         const day = dateTime.getDate();
-                        const month = dateTime.getMonth() + 1 //Starter fra 0 så der tilføjes 1;
+                        const month = dateTime.getMonth() + 1
                         const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                        listItem.textContent = `${day}/${month} - ${time}, Sal: ${showing.theatre.theatreId}`;
+                        listItem.textContent = `${day}/${month} - ${time}, Cinema hal: ${showing.theatre.theatreId}`;
 
-                        // Add click event to change the location
+
                         listItem.addEventListener('click', function() {
                             window.location.href = `bio.html?id=${showing.showingId}`;
                         });
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const response = await fetch("http://localhost:8080/admin/check-admin-presence", {
                 method: "GET",
-                credentials: "include" // Include credentials for session management
+                credentials: "include"
             });
             return response.ok;
         } catch (error) {
@@ -116,13 +116,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (isLoggedIn) {
             addShowingButton.style.display = 'inline-block';
             addShowingButton.addEventListener("click", () => {
-                modal.style.display = "block"; // Show the modal
+                modal.style.display = "block";
             });
         }
     });
 
     closeModal.addEventListener("click", () => {
-        modal.style.display = "none"; // Hide the modal
+        modal.style.display = "none";
     });
 
     window.addEventListener("click", (event) => {
@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 modal.style.display = "none"; // Close the modal
                 fetchShowings(movieId); // Refresh the showings list
             })
-            .catch(error => console.error('Error adding showing:', error));
+            .catch(error => console.error('Error for adding a showing:', error));
     });
 });
 
@@ -189,7 +189,7 @@ function populateTheatreDropdown() {
         .catch(error => console.error('Error fetching theatres:', error));
 }
 
-// Call the function when the page is loaded or modal is opened
+
 document.addEventListener('DOMContentLoaded', populateTheatreDropdown);
 
 function populateAdminDropdown() {
@@ -202,7 +202,7 @@ function populateAdminDropdown() {
             adminSelect.innerHTML = '';
 
             const placeholderOption = document.createElement('option');
-            placeholderOption.text = "Select a user";
+            placeholderOption.text = "Pick a user";
             placeholderOption.value = "";
             adminSelect.appendChild(placeholderOption);
 

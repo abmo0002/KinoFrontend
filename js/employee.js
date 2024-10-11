@@ -46,10 +46,10 @@ document.getElementById("create-admin-form").addEventListener("submit", async fu
         });
 
         if (response.ok) {
-            alert("Admin registered successfully");
-            // Optionally, reset the form or close the modal
-            document.getElementById("create-admin-form").reset();
-            document.getElementById("create-admin-modal").style.display = "none";
+            alert("Employee is registered successfully");
+
+            document.getElementById("create-employee-form").reset();
+            document.getElementById("create-employee-modal").style.display = "none";
         } else {
             const errorText = await response.text();
             alert("Error: " + errorText);

@@ -17,8 +17,8 @@ const movieImdbInput = document.getElementById("movie-Imdb-rating");
 const movieActorsInput = document.getElementById("movie-actors");
 const movieDirectorsInput = document.getElementById("movie-directors");
 const movieRelaseDateInput = document.getElementById("movie-release-date");
-let currentMovieId = null; // To keep track of the current movie
-const backendUrl = 'http://localhost:8080'; // Replace with your backend's URL and port
+let currentMovieId = null;
+const backendUrl = 'http://localhost:8080';
 
 searchButton.addEventListener("click", function () {
     const movieTitle = searchInput.value.trim();
@@ -28,20 +28,20 @@ searchButton.addEventListener("click", function () {
             .then(response => {
                 if (!response.ok) {
                     if (response.status === 404) {
-                        throw new Error("Ingen film fundet.");
+                        throw new Error("No movie found.");
                     } else {
-                        throw new Error("Fejl ved hentning af film.");
+                        throw new Error("Error fetching movie");
                     }
                 }
                 return response.json();
             })
             .then(movies => {
                 if (movies.length > 0) {
-                    // For simplicity, take the first movie that matches
+
                     const movie = movies[0];
                     currentMovieId = movie.movieId;
 
-                    // Populate modal with movie data
+
                     titleInput.value = movie.title;
                     releaseYearInput.value = movie.year;
                     runtimeInput.value = movie.runtime;
@@ -54,12 +54,12 @@ searchButton.addEventListener("click", function () {
                     // Open the modal
                     modal.classList.add("modal-open");
                 } else {
-                    alert("Ingen film fundet.");
+                    alert("No movie found");
                 }
             })
             .catch(error => alert(error.message));
     } else {
-        alert("Indtast venligst en film titel.");
+        alert("Please chose i movie title");
     }
 });
 
@@ -90,35 +90,35 @@ saveButton.addEventListener("click", function (e) {
         })
             .then(response => {
                 if (response.ok) {
-                    alert("Filmen er blevet opdateret!");
+                    alert("Movie has been updated");
                     modal.classList.remove("modal-open");
                 } else {
-                    alert("Der opstod en fejl under opdateringen.");
+                    alert("An error has occurred doing updating");
                 }
             })
-            .catch(error => console.error("Fejl ved opdatering af film:", error));
+            .catch(error => console.error("An error has occurred doing updating:", error));
     } else {
-        alert("Ingen film valgt til opdatering.");
+        alert("No movie i chosen to be updated");
     }
     ;
 })
 deleteButton.addEventListener("click", function () {
     if (currentMovieId) {
-        if (confirm("Er du sikker på, at du vil slette denne film?")) {
+        if (confirm("Are you sure you want to delete the movie")) {
             fetch(`${backendUrl}/movie/${currentMovieId}`, {
                 method: 'DELETE',
             })
                 .then(response => {
                     if (response.ok) {
-                        alert("Filmen er blevet slettet!");
+                        alert("The movie is deleted!");
                         modal.classList.remove("modal-open");
                     } else {
-                        alert("Der opstod en fejl under sletningen.");
+                        alert("An error has occurred while deleting the movie");
                     }
                 })
-                .catch(error => console.error("Fejl ved sletning af film:", error));
+                .catch(error => console.error("An error while deleting the movie:", error));
         }
     } else {
-        alert("Ingen film valgt til sletning.");
+        alert("No movie are chosen to be deleted.");
     }
 });

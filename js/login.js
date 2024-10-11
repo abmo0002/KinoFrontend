@@ -1,32 +1,32 @@
 document.getElementById("login-form").addEventListener("submit", async function (event) {
     event.preventDefault();
 
-    const Username = document.getElementById("Username").value;
+    const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
     try {
-        // Ensure the path is correct
-        const response = await fetch("http://localhost:8080/admin/login", {
+        
+        const response = await fetch("http://localhost:8080/employee/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                username: Username,
+                username: username,
                 password: password
             }),
-            credentials: "include" // Include credentials (cookies) in the request
+            credentials: "include" 
         });
 
         if (response.ok) {
-            alert("Du er nu logget ind som admin");
-            window.location.href = 'employee.html'; // Redirect to the admin dashboard
+            alert("You are now logged in as an employee");
+            window.location.href = 'employee.html'; 
         } else {
             document.getElementById("error-message").style.display = "block";
         }
     } catch (error) {
         console.error("Error", error);
-        document.getElementById("error-message").innerText = "Der skete en fejl, prøv igen!";
+        document.getElementById("error-message").innerText = "an error has occurred!";
         document.getElementById("error-message").style.display = "block";
     }
 });

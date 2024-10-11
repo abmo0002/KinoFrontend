@@ -36,7 +36,7 @@ function isSeatBooked(seat, bookedSeats) {
 // Function to render all seats based on theater layout and mark occupied ones
 function renderSeats(allSeats, bookedSeats, seatRows, seatsPerRow) {
     const container = document.querySelector('.container');
-    container.innerHTML = ''; // Clear previous seats
+    container.innerHTML = '';
 
     // Loop over all rows and seats per row
     for (let rowIndex = 1; rowIndex <= seatRows; rowIndex++) {
@@ -100,7 +100,7 @@ function saveBooking() {
     const emailInput = document.getElementById('email');
     const email = emailInput.value.trim();
     if (!email) {
-        alert('Indtast venligst din email.');
+        alert('Write your email.');
         return;
     }
 
@@ -128,7 +128,7 @@ function createBooking(showingId, email, seatIds) {
             return response.json();
         })
         .then(responseData => {
-            alert('Booking gemt!');
+            alert('Booking is saved!');
             localStorage.setItem('bookingDetails', JSON.stringify(responseData));
             window.location.href= "../html/reservation.html"
             // Update the UI by calling loadSeatsForShowing
@@ -136,7 +136,7 @@ function createBooking(showingId, email, seatIds) {
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Der opstod en fejl under oprettelse af bookingen: ' + error.message);
+            alert('An error occurred while creating the booking' + error.message);
         });
 }
 

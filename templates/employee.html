@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,50 +10,47 @@
 </head>
 <body>
 <div class="header">
-    <a href="landingPage.html" class="logo">KinoXP</a>
+    <a href="index.html" class="logo">KinoXP</a>
 </div>
 <p> </p>
 <p> </p>
-<h2>Velkommen til admin dashboardet</h2>
+<h2>Welcome to employee Dashboard</h2>
 <p> </p>
 <div class="button-container">
-    <div class="button-container">
-        <div class="button-group">
-            <button id="create-admin-btn">Opret admin</button>
-            <button id="edit-movie-btn">Rediger film</button>
-
-
-        </div></div>
     <div class="button-group">
-        <button id="create-theatre">Opret sal</button>
-        <button type="button" data-bs-toggle="modal" data-bs-target="#movie-modal">Tilføj film</button>
+        <button id="create-employee-btn">Create employee</button>
+        <button id="edit-movie-btn">Edit Movie</button>
     </div>
-    <div id="create-admin-modal" style="display: none;">
-        <form id="create-admin-form">
-            <label for="new-username">Brugernavn:</label>
+    <div class="button-group">
+        <button id="create-cinema-hall">Create Theatre</button>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#movie-modal">Add Movie</button>
+    </div>
+    <div id="create-employee-modal" style="display: none;">
+        <form id="create-employee-form">
+            <label for="new-username">Username:</label>
             <input type="text" id="new-username" required>
             <label for="new-password">Password:</label>
             <input type="password" id="new-password" required>
-            <label for="new-fullname">Fulde navn:</label>
+            <label for="new-fullname">Full Name:</label>
             <input type="text" id="new-fullname" required>
-            <button type="submit">Registrer Admin</button>
+            <button type="submit">Register Admin</button>
         </form>
     </div>
     <div class="modal fade" id="movie-modal" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modal-title">Tilføj film</h5>
+                    <h5 class="modal-title" id="modal-title">Add Movie</h5>
                     <button type="button" class="modal-button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="movie-form">
                         <div class="mb-3">
-                            <label for="input-title" class="form-label">Titel</label>
+                            <label for="input-title" class="form-label">Title</label>
                             <input type="text" class="form-control" id="input-title" name="title" required>
                         </div>
                         <div class="mb-3">
-                            <label for="input-year" class="form-label">År</label>
+                            <label for="input-year" class="form-label">Year</label>
                             <input type="text" class="form-control" id="input-year" name="year">
                         </div>
                         <div class="mb-3">
@@ -70,15 +66,15 @@
                             <input type="text" class="form-control" id="input-genre" name="genre">
                         </div>
                         <div class="mb-3">
-                            <label for="input-director" class="form-label">Instruktør</label>
+                            <label for="input-director" class="form-label">Director</label>
                             <input type="text" class="form-control" id="input-director" name="director">
                         </div>
                         <div class="mb-3">
-                            <label for="input-actors" class="form-label">Skuespillere</label>
+                            <label for="input-actors" class="form-label">Actors</label>
                             <input type="text" class="form-control" id="input-actors" name="actors">
                         </div>
                         <div class="mb-3">
-                            <label for="input-poster" class="form-label">Plakat URL</label>
+                            <label for="input-poster" class="form-label">Poster URL</label>
                             <input type="text" class="form-control" id="input-poster" name="poster">
                         </div>
                         <div class="mb-3">
@@ -92,24 +88,23 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuller</button>
-                    <button id="btn-save-movie" type="button" class="btn btn-primary">Gem</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button id="btn-save-movie" type="button" class="btn btn-primary">Save</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="create-theatre-modal" style="display: none;">
-        <form id="create-theatre-form">
-            <label for="seats">Sæder</label>
+    <div id="create-cinema-hall-modal" style="display: none;">
+        <form id="create-cinema-hall-form">
+            <label for="seats">Seats</label>
             <input type="number" id="seats" required>
-            <label for="rows">Rækker</label>
+            <label for="rows">Rows</label>
             <input type="number" id="rows" required>
-            <button type="submit">Opret sal</button>
+            <button type="submit">Create Theatre</button>
         </form>
     </div>
     <script src="../js/employee.js" type="module"></script>
 </div>
 </body>
-
 </html>
