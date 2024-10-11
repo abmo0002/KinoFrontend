@@ -20,7 +20,7 @@ document.getElementById("login-form").addEventListener("submit", async function 
 
         if (response.ok) {
             alert("Du er nu logget ind som admin");
-            window.location.href = 'admin.html'; // Redirect to the admin dashboard
+            window.location.href = 'employee.html'; // Redirect to the admin dashboard
         } else {
             document.getElementById("error-message").style.display = "block";
         }
