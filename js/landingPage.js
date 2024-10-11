@@ -9,7 +9,7 @@ fetch('http://localhost:8080/movies')
 
             movieItem.innerHTML = `
                 <div class="poster">
-                    <a href="movie_detail.html?id=${movie.movieId}">
+                    <a href="movie.html?id=${movie.movieId}">
                         <img src="${movie.poster}" alt="${movie.title} Poster">
                     </a>
                 </div>

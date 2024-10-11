@@ -3,7 +3,7 @@ const showingId = getQueryParam('id'); // Get the movie ID from the URL
 if (showingId) {
     loadSeatsForShowing(showingId);
 } else {
-    document.getElementById('movieDetails').innerHTML = '<p>No showing ID selected</p>';
+    document.getElementById('movie').innerHTML = '<p>No showing ID selected</p>';
 }
 
 function getQueryParam(param) {

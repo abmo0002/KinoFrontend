@@ -4,6 +4,7 @@ const closeModalButton = document.getElementById("close-modal");
 const cancelButton = document.getElementById("cancel-button");
 const saveButton = document.getElementById("save-button");
 const deleteButton = document.getElementById("delete-movie-btn");
+
 // Input elements
 const searchInput = document.getElementById("searched-movie");
 const searchButton = document.getElementById("search-button");

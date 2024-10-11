@@ -1,7 +1,7 @@
 document.getElementById("login-form").addEventListener("submit", async function (event) {
     event.preventDefault();
 
-    const brugernavn = document.getElementById("brugernavn").value;
+    const Username = document.getElementById("Username").value;
     const password = document.getElementById("password").value;
 
     try {
@@ -12,7 +12,7 @@ document.getElementById("login-form").addEventListener("submit", async function 
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                username: brugernavn,
+                username: Username,
                 password: password
             }),
             credentials: "include" // Include credentials (cookies) in the request
@@ -20,7 +20,7 @@ document.getElementById("login-form").addEventListener("submit", async function 
 
         if (response.ok) {
             alert("Du er nu logget ind som admin");
-            window.location.href = 'admin_dashboard.html'; // Redirect to the admin dashboard
+            window.location.href = 'admin.html'; // Redirect to the admin dashboard
         } else {
             document.getElementById("error-message").style.display = "block";
         }

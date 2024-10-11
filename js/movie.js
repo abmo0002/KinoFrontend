@@ -39,13 +39,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
 
                 } else {
-                    document.getElementById('movieDetails').innerHTML = '<p>Movie not found.</p>';
+                    document.getElementById('movie').innerHTML = '<p>Movie not found.</p>';
                 }
 
             })
             .catch(error => {
                 console.error('Error fetching movie details:', error);
-                document.getElementById('movieDetails').innerHTML = '<p>Error fetching movie details.</p>';
+                document.getElementById('movie').innerHTML = '<p>Error fetching movie details.</p>';
             });
 
 
